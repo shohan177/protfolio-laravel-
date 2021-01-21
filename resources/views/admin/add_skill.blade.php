@@ -1,4 +1,12 @@
-@extends("layouts.app")
+@section('header')
+<div class="row">
+    <div class="dashboard_bar col-sm-12">
+        My Skills
+     </div>
+</div>
+@endsection
+
+@extends("admin.layouts.app")
 
 @section('body')
 <div class="container-fluid">

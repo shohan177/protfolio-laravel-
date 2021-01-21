@@ -22148,8 +22148,8 @@ svg text {
   border-radius: 0;
   background: #fff;
   border: 1px solid #f0f1f5;
-  color: #B1B1B1;
-  height: 56px; }
+  color: #333333;
+  height: 45px; }
   @media only screen and (max-width: 1400px) {
     .form-control {
       height: 41px; } }
@@ -30714,3 +30714,5 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+

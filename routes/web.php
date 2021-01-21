@@ -22,5 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/skill', 'App\Http\Controllers\skillController');
 Route::get('/all-skill', 'App\Http\Controllers\skillController@showAllSkill') ->name('get_skills');
+Route::get('/slider', 'App\Http\Controllers\settingController@sliderSetting') ->name('setting.index');
+Route::post('/slider', 'App\Http\Controllers\settingController@sliderDataStore') ->name('store.slider');
 
 

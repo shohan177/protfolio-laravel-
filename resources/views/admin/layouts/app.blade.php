@@ -1,4 +1,4 @@
-@include('layouts.head')
+@include('admin.layouts.head')
 <body>
 
     <!--*******************
@@ -43,7 +43,7 @@
 		<!--**********************************
             Chat box start
         ***********************************-->
-            @include('layouts.chatbox')
+            @include('admin.layouts.chatbox')
 		<!--**********************************
             Chat box End
         ***********************************-->
@@ -51,7 +51,7 @@
 		<!--**********************************
             Header start
         ***********************************-->
-            @include('layouts.header')
+            @include('admin.layouts.header')
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -59,7 +59,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-            @include('layouts.sidebar')
+            @include('admin.layouts.sidebar')
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -110,7 +110,7 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    @include('layouts.scripts')
+    @include('admin.layouts.scripts')
 </body>
 
 <!-- Mirrored from jobie.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Dec 2020 06:20:20 GMT -->

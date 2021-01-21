@@ -19,7 +19,7 @@ class skillController extends Controller
      */
     public function index()
     {
-       return view('add_skill');
+       return view('admin.add_skill');
     }
 
     /**

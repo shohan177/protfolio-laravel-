@@ -9,10 +9,10 @@
 			<!-- intro -->
 			<div class="intro">
 				<!-- avatar image -->
-				<img src="forntend/asset/images/avatar-1.svg" alt="Bolby" class="mb-4" />
+				<img src="/favicon.jpg" alt="Bolby" class="mb-4" />
 
 				<!-- info -->
-				<h1 class="mb-2 mt-0">Sarwar jahan Shohan</h1>
+				<h1 class="mb-2 mt-0">Munjurul Hasan Iusha</h1>
 				<span>I'm a <span class="text-rotating">Web Devolopor, Software developer, Photography lover</span></span>
 
 				<!-- social icons -->
