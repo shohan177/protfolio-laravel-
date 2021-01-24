@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\json_decode;
 
 class skillController extends Controller
 {
@@ -19,7 +22,9 @@ class skillController extends Controller
      */
     public function index()
     {
-       return view('admin.add_skill');
+        $setting_data = Setting::find(1);
+       $services = json_decode($setting_data -> service);
+       return view('admin.add_skill',compact('services'));
     }
 
     /**

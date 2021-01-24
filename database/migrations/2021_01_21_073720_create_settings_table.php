@@ -15,7 +15,7 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->longText('sldier') -> nullable();
+            $table->longText('setting_data') -> nullable();
             $table->longText('about') -> nullable();
             $table->longText('service') -> nullable();
             $table->longText('experience') -> nullable();

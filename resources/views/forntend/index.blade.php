@@ -1,27 +1,39 @@
+@php
+    $data = App\Models\Setting::find(1);
+    $s_val = json_decode($data -> setting_data);
+    $service = json_decode($data -> service);
+    $exp = json_decode($data -> experience);
+
+@endphp
 @extends('forntend.app')
 @section('body')
 <main class="content-2">
 
 	<!-- section home -->
 	<section id="home" class="home d-flex align-items-center">
+
 		<div class="container" >
 
 			<!-- intro -->
 			<div class="intro">
 				<!-- avatar image -->
-				<img src="/favicon.jpg" alt="Bolby" class="mb-4" />
+				<img  style="border-radius: 50%;height: 150px; width:150px " src="{{ URL::to('/')}}/media/home/{{ $s_val -> pro_photo }}" alt="Bolby" class="mb-4" />
 
 				<!-- info -->
-				<h1 class="mb-2 mt-0">Munjurul Hasan Iusha</h1>
-				<span>I'm a <span class="text-rotating">Web Devolopor, Software developer, Photography lover</span></span>
+				<h1 class="mb-2 mt-0">{{ $s_val -> title }}</h1>
+				<span>I'm a <span class="text-rotating">
+                    @foreach ($s_val -> moto as $val)
+                        {{ $val -> name }},
+                    @endforeach
+                    </span></span>
 
 				<!-- social icons -->
 				<ul class="social-icons light list-inline mb-0 mt-4">
-					<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-behance"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                    @foreach ($s_val -> social_link as $data)
+                        <li class="list-inline-item"><a href="{{ URL::to($data -> url) }}"><i class="{{ $data -> logo  }}"></i></a></li>
+                    @endforeach
+
+
 				</ul>
 
 				<!-- buttons -->
@@ -41,7 +53,7 @@
 			</div>
 
 			<!-- parallax layers -->
-			<div class="parallax" data-relative-input="true"  style="background-image: linear-gradient(rgba(255, 0, 0, 0.521), rgba(5, 10, 90, 0.699)),url(shohan.jpg);  background-attachment: fixed;
+			<div class="parallax col-sm-12" data-relative-input="true"  style="background-image: linear-gradient(rgba(255, 0, 0, 0.521), rgba(5, 10, 90, 0.699)),url({{ URL::to('/')}}/media/home/{{ $s_val -> cover_photo }});  background-attachment: fixed;
 			background-position: center;">
 
 				<svg width="27" height="29" data-depth="0.3" class="layer p1" xmlns="http://www.w3.org/2000/svg"><path d="M21.15625.60099c4.37954 3.67487 6.46544 9.40612 5.47254 15.03526-.9929 5.62915-4.91339 10.30141-10.2846 12.25672-5.37122 1.9553-11.3776.89631-15.75715-2.77856l2.05692-2.45134c3.50315 2.93948 8.3087 3.78663 12.60572 2.22284 4.297-1.5638 7.43381-5.30209 8.22768-9.80537.79387-4.50328-.8749-9.08872-4.37803-12.02821L21.15625.60099z" fill="#FFD15C" fill-rule="evenodd"/></svg>
@@ -86,7 +98,7 @@
 				<div class="col-md-3">
 					<div class="text-center text-md-left">
 						<!-- avatar image -->
-						<img src="forntend/asset/images/avatar-2.svg" alt="Bolby" />
+						<img  style="border-radius: 50%;height: 150px; width:150px " src="{{ URL::to('/')}}/media/home/{{ $s_val -> pro_photo }}" alt="Bolby" class="mb-4" />
 					</div>
 					<div class="spacer d-md-none d-lg-none" data-height="30"></div>
 				</div>
@@ -96,7 +108,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<!-- about text -->
-								<p>I am Bolby Doe, web developer from London, United Kingdom. I have rich experience in web site design and building and customization, also I am good at WordPress.</p>
+								<p>{!! Str::of(htmlspecialchars_decode($s_val -> about_text)) !!}</p>
 								<div class="mt-3">
 									<a href="#" class="btn btn-default">Download CV</a>
 								</div>
@@ -110,7 +122,7 @@
 										<span class="float-right">85%</span>
 									</div>
 									<div class="progress">
-										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" data-color="#FFD15C">
+										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" data-color="#FFD15C">
 										</div>
 									</div>
 									<div class="spacer" data-height="20"></div>
@@ -123,7 +135,7 @@
 										<span class="float-right">95%</span>
 									</div>
 									<div class="progress">
-										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="95" data-color="#FF4C60">
+										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" data-color="#FF4C60">
 										</div>
 									</div>
 									<div class="spacer" data-height="20"></div>
@@ -217,34 +229,18 @@
 
 			<div class="row">
 
-				<div class="col-md-4">
+            @foreach ($service as $data)
+                <div class="col-md-4">
 					<!-- service box -->
 					<div class="service-box rounded data-background padding-30 text-center text-light shadow-blue" data-color="#6C6CE5">
-						<img src="forntend/asset/images/service-1.svg" alt="UI/UX design" />
-						<h3 class="mb-3 mt-0">UI/UX design</h3>
-						<p class="mb-0">Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.</p>
+						<img style="height: 100px; width:100px " src="{{ URL::to('/')}}/media/home/{{ $data -> logo }}" alt="UI/UX design" />
+						<h3 class="mb-3 mt-0">{{ $data -> name }}</h3>
+						<p class="mb-0">{{ $data -> about }}</p>
 					</div>
 					<div class="spacer d-md-none d-lg-none" data-height="30"></div>
 				</div>
+            @endforeach
 
-				<div class="col-md-4">
-					<!-- service box -->
-					<div class="service-box rounded data-background padding-30 text-center shadow-yellow" data-color="#F9D74C">
-						<img src="forntend/asset/images/service-2.svg" alt="UI/UX design" />
-						<h3 class="mb-3 mt-0">Web Development</h3>
-						<p class="mb-0">Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.</p>
-					</div>
-					<div class="spacer d-md-none d-lg-none" data-height="30"></div>
-				</div>
-
-				<div class="col-md-4">
-					<!-- service box -->
-					<div class="service-box rounded data-background padding-30 text-center text-light shadow-pink" data-color="#F97B8B">
-						<img src="forntend/asset/images/service-3.svg" alt="UI/UX design" />
-						<h3 class="mb-3 mt-0">Photography</h3>
-						<p class="mb-0">Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.</p>
-					</div>
-				</div>
 
 			</div>
 
@@ -272,33 +268,19 @@
 
 					<!-- timeline wrapper -->
 					<div class="timeline edu bg-white rounded shadow-dark padding-30 overflow-hidden">
+                        @foreach ($exp -> academi as $val)
+                            <!-- timeline item -->
+                            <div class="timeline-container wow fadeInUp">
+                                <div class="content">
+                                    <span class="time">{{ $val -> start }} - {{ $val -> end }}</span>
+                                    <h3 class="title">{{ $val -> name }}</h3>
+                                    <p>{!! Str::of(htmlspecialchars_decode($val -> about)) !!}.</p>
+                                </div>
+                            </div>
+                        @endforeach
 
-						<!-- timeline item -->
-						<div class="timeline-container wow fadeInUp">
-							<div class="content">
-								<span class="time">2019 - Present</span>
-								<h3 class="title">Academic Degree</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
-							</div>
-						</div>
 
-						<!-- timeline item -->
-						<div class="timeline-container wow fadeInUp" data-wow-delay="0.2s">
-							<div class="content">
-								<span class="time">2017 - 2013</span>
-								<h3 class="title">Bachelor’s Degree</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
-							</div>
-						</div>
 
-						<!-- timeline item -->
-						<div class="timeline-container wow fadeInUp" data-wow-delay="0.4s">
-							<div class="content">
-								<span class="time">2013 - 2009</span>
-								<h3 class="title">Honours Degree</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
-							</div>
-						</div>
 
 						<!-- main line -->
 						<span class="line"></span>
@@ -314,34 +296,19 @@
 
 					<!-- timeline wrapper -->
 					<div class="timeline exp bg-white rounded shadow-dark padding-30 overflow-hidden">
+                        @foreach ($exp -> works as $val)
 
 						<!-- timeline item -->
 						<div class="timeline-container wow fadeInUp">
 							<div class="content">
-								<span class="time">2019 - Present</span>
-								<h3 class="title">Web Designer</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
+								<span class="time">{{ $val -> start }} - {{ $val -> end }}</span>
+                                    <h3 class="title">{{ $val -> name }}</h3>
+                                    <p>{!! Str::of(htmlspecialchars_decode($val -> about)) !!}.</p>
 							</div>
 						</div>
 
-						<!-- timeline item -->
-						<div class="timeline-container wow fadeInUp" data-wow-delay="0.2s">
-							<div class="content">
-								<span class="time">2017 - 2013</span>
-								<h3 class="title">Front-End Developer</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
-							</div>
-						</div>
 
-						<!-- timeline item -->
-						<div class="timeline-container wow fadeInUp" data-wow-delay="0.4s">
-							<div class="content">
-								<span class="time">2013 - 2009</span>
-								<h3 class="title">Back-End Developer</h3>
-								<p>Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.</p>
-							</div>
-						</div>
-
+                        @endforeach
 						<!-- main line -->
 						<span class="line"></span>
 

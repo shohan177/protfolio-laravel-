@@ -4,6 +4,9 @@
     <script src="js/custom.min.js"></script>
 	<script src="js/deznav-init.js"></script>
 	<script src="vendor/owl-carousel/owl.carousel.js"></script>
+    {{-- sweet alert --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	<!-- Chart piety plugin files -->
     <script src="vendor/peity/jquery.peity.min.js"></script>

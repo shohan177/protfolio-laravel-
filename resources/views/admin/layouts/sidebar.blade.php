@@ -1,7 +1,7 @@
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
-            <li><a class="has-arrow ai-icon" href="{{ route('home') }}" aria-expanded="false">
+            <li><a class="" href="{{ route('home') }}" aria-expanded="false">
                     <i class="flaticon-381-networking"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -16,9 +16,9 @@
             </li>
             <li>
 
-                <a class="has-arrow ai-icon" href="{{ route('skill.index') }}" aria-expanded="false">
+                <a class="" href="{{ route('skill.index') }}" aria-expanded="false">
                     <i class="flaticon-381-television"></i>
-                    <span class="nav-text">Apps</span>
+                    <span class="nav-text">Skill & Service</span>
                 </a>
                 {{-- <ul aria-expanded="false">
                     <li><a href="app-profile.html">Profile</a></li>
@@ -43,57 +43,23 @@
                     </li>
                 </ul> --}}
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li><a class="" href="{{ route('setting.index') }}" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
-                    <span class="nav-text">Charts</span>
+                    <span class="nav-text">Setting</span>
                 </a>
-                <ul aria-expanded="false">
-                    <li><a href="chart-flot.html">Flot</a></li>
-                    <li><a href="chart-morris.html">Morris</a></li>
-                    <li><a href="chart-chartjs.html">Chartjs</a></li>
-                    <li><a href="chart-chartist.html">Chartist</a></li>
-                    <li><a href="chart-sparkline.html">Sparkline</a></li>
-                    <li><a href="chart-peity.html">Peity</a></li>
-                </ul>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-internet"></i>
-                    <span class="nav-text">Bootstrap</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="ui-accordion.html">Accordion</a></li>
-                    <li><a href="ui-alert.html">Alert</a></li>
-                    <li><a href="ui-badge.html">Badge</a></li>
-                    <li><a href="ui-button.html">Button</a></li>
-                    <li><a href="ui-modal.html">Modal</a></li>
-                    <li><a href="ui-button-group.html">Button Group</a></li>
-                    <li><a href="ui-list-group.html">List Group</a></li>
-                    <li><a href="ui-media-object.html">Media Object</a></li>
-                    <li><a href="ui-card.html">Cards</a></li>
-                    <li><a href="ui-carousel.html">Carousel</a></li>
-                    <li><a href="ui-dropdown.html">Dropdown</a></li>
-                    <li><a href="ui-popover.html">Popover</a></li>
-                    <li><a href="ui-progressbar.html">Progressbar</a></li>
-                    <li><a href="ui-tab.html">Tab</a></li>
-                    <li><a href="ui-typography.html">Typography</a></li>
-                    <li><a href="ui-pagination.html">Pagination</a></li>
-                    <li><a href="ui-grid.html">Grid</a></li>
 
-                </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-heart"></i>
-                    <span class="nav-text">Plugins</span>
+            <li><a class="" href="{{ route('experiance.show') }}" aria-expanded="false">
+                    <i class="flaticon-381-internet"></i>
+                    <span class="nav-text">Experiance</span>
                 </a>
-                <ul aria-expanded="false">
-                    <li><a href="uc-select2.html">Select 2</a></li>
-                    <li><a href="uc-nestable.html">Nestedable</a></li>
-                    <li><a href="uc-noui-slider.html">Noui Slider</a></li>
-                    <li><a href="uc-sweetalert.html">Sweet Alert</a></li>
-                    <li><a href="uc-toastr.html">Toastr</a></li>
-                    <li><a href="map-jqvmap.html">Jqv Map</a></li>
-                    <li><a href="uc-lightgallery.html">Light Gallery</a></li>
-                </ul>
+
+            </li>
+            <li><a class="" href="{{ route('review.show') }}" aria-expanded="false">
+                    <i class="flaticon-381-heart"></i>
+                    <span class="nav-text">Review</span>
+                </a>
+
             </li>
             <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-settings-2"></i>
