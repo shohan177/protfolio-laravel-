@@ -53,7 +53,7 @@
 			</div>
 
 			<!-- parallax layers -->
-			<div class="parallax col-sm-12" data-relative-input="true"  style="background-image: linear-gradient(rgba(255, 0, 0, 0.521), rgba(5, 10, 90, 0.699)),url({{ URL::to('/')}}/media/home/{{ $s_val -> cover_photo }});  background-attachment: fixed;
+			<div class="parallax col-sm-12" data-relative-input="true"  style="background-image: linear-gradient(rgba({{ $s_val -> color_top }}), rgba({{ $s_val -> color_bottom }})),url({{ URL::to('/')}}/media/home/{{ $s_val -> cover_photo }});  background-attachment: fixed;
 			background-position: center;">
 
 				<svg width="27" height="29" data-depth="0.3" class="layer p1" xmlns="http://www.w3.org/2000/svg"><path d="M21.15625.60099c4.37954 3.67487 6.46544 9.40612 5.47254 15.03526-.9929 5.62915-4.91339 10.30141-10.2846 12.25672-5.37122 1.9553-11.3776.89631-15.75715-2.77856l2.05692-2.45134c3.50315 2.93948 8.3087 3.78663 12.60572 2.22284 4.297-1.5638 7.43381-5.30209 8.22768-9.80537.79387-4.50328-.8749-9.08872-4.37803-12.02821L21.15625.60099z" fill="#FFD15C" fill-rule="evenodd"/></svg>
@@ -115,43 +115,38 @@
 								<div class="spacer d-md-none d-lg-none" data-height="30"></div>
 							</div>
 							<div class="col-md-6">
-								<!-- skill item -->
+
+                                @php
+                                   $skill_data = App\Models\Skill::latest() -> get();
+                                @endphp
+
+                                @foreach ($skill_data as $val)
+                                @php
+                                    if ($val -> level < 30){
+                                        $color = "#E9594D";
+                                    }elseif($val -> level < 70){
+                                        $color = "#FFD15C";
+                                    }else{
+                                        $color = "#2CC37C";
+                                    }
+
+                                @endphp
+
 								<div class="skill-item">
 									<div class="skill-info clearfix">
-										<h4 class="float-left mb-3 mt-0">Development</h4>
-										<span class="float-right">85%</span>
+										<h4 class="float-left mb-3 mt-0">{{ $val -> name }}</h4>
+										<span class="float-right">{{ $val -> level }}%</span>
 									</div>
 									<div class="progress">
-										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" data-color="#FFD15C">
+										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ $val -> level }}" data-color="{{ $color }}">
 										</div>
 									</div>
 									<div class="spacer" data-height="20"></div>
 								</div>
+                                @endforeach
 
-								<!-- skill item -->
-								<div class="skill-item">
-									<div class="skill-info clearfix">
-										<h4 class="float-left mb-3 mt-0">UI/UX design</h4>
-										<span class="float-right">95%</span>
-									</div>
-									<div class="progress">
-										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" data-color="#FF4C60">
-										</div>
-									</div>
-									<div class="spacer" data-height="20"></div>
-								</div>
 
-								<!-- skill item -->
-								<div class="skill-item">
-									<div class="skill-info clearfix">
-										<h4 class="float-left mb-3 mt-0">Photography</h4>
-										<span class="float-right">70%</span>
-									</div>
-									<div class="progress">
-										<div class="progress-bar data-background" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" data-color="#6C6CE5">
-										</div>
-									</div>
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -230,10 +225,10 @@
 			<div class="row">
 
             @foreach ($service as $data)
-                <div class="col-md-4">
+                <div class="col-md-4 mt-5">
 					<!-- service box -->
-					<div class="service-box rounded data-background padding-30 text-center text-light shadow-blue" data-color="#6C6CE5">
-						<img style="height: 100px; width:100px " src="{{ URL::to('/')}}/media/home/{{ $data -> logo }}" alt="UI/UX design" />
+					<div class="service-box rounded data-background padding-30 text-center text-light shadow" style="color: {{ $data -> color }}; box-shadow:1px 2px 10px {{ $data -> color }};" data-color="{{ $data -> color }}">
+						<img style="height: 100px; width:100px " src="{{ URL::to('/')}}/media/home/{{ $data -> logo }}" alt="{{ $data -> name }}" />
 						<h3 class="mb-3 mt-0">{{ $data -> name }}</h3>
 						<p class="mb-0">{{ $data -> about }}</p>
 					</div>

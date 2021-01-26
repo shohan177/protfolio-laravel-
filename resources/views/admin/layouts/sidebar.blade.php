@@ -60,7 +60,7 @@
                     <span class="nav-text">Review</span>
                 </a>
 
-            </li>
+            {{-- </li>
             <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-settings-2"></i>
                     <span class="nav-text">Widget</span>
@@ -105,12 +105,12 @@
                     </li>
                     <li><a href="page-lock-screen.html">Lock Screen</a></li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
 
-        <div class="copyright">
-            <p><strong>Jobie Dashboard</strong> ©All Rights Reserved</p>
-            <p>by DexignZone</p>
-        </div>
+        {{-- <div class="copyright">
+            <p><strong>Admin Dashboard</strong> ©All Rights Reserved</p>
+            <p>by Shohan</p>
+        </div> --}}
     </div>
 </div>

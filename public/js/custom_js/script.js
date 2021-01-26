@@ -70,6 +70,40 @@
         $skill_id = $(this).attr('skill_edit_id')
         alert( $skill_id);
     })
+    //delete skill
+    $(document).on('click','#skill_delete',function(e){
+        e.preventDefault()
+        $del_id = $(this).attr('skill_delete_id')
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                  confirmButton: 'btn btn-success',
+                  cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+              })
+
+              swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/skill-delete/' +$del_id,
+                        success: function(data){
+                            getAllSkill()
+                        }
+                    })
+                }
+
+              })
+
+    })
     //add socal link fild
     $(document).on('click','#add_socal_link',function(e){
         e.preventDefault()
@@ -188,11 +222,14 @@
         '                            <div id="default_'+rend_id+'" class="accordion__body collapse" data-parent="#accordion-'+rend_id+'" style="">\n' +
         '                                <div class="accordion__body--text">\n' +
         '                                    <div class="form-row input-info ">\n' +
-        '                                        <div class="col-sm-7">\n' +
+        '                                        <div class="col-sm-5">\n' +
         '                                            <input type="text" name="name[]" class="form-control input-rounded" placeholder="Service name">\n' +
         '                                        </div>\n' +
+        '                                        <div class="col-sm-2">\n' +
+        '                                            <input type="color" class="form-control input-rounded" id="favcolor" name="color[]" value="#ff0000">\n' +
+        '                                        </div>\n' +
         '                                        <div class="col mt-5 mt-sm-0 ml-lg-2">\n' +
-        '                                            <label for="logo_input_'+rend_id+'"><img id="'+rend_id+'" style="cursor: pointer; border-radius: 5px;" src="/media/logo/one.png" class="w-75 h-50" alt=""></label>\n' +
+        '                                            <label for="logo_input_'+rend_id+'"><img id="'+rend_id+'" style="cursor: pointer; border-radius: 5px;" src="/media/logo/camera.png" class="w-75 h-50" alt=""></label>\n' +
         '                                            <input name="logo[]" id="logo_input_'+rend_id+'"  class="upload_image" code="'+rend_id+'"  type="file"  style="display: none">\n' +
         '                                            <input name="old_logo[]" value="" type="text" style="display: none">\n' +
         '                                            <input name="r_id[]" value="'+rend_id+'" type="text" style="display: none">\n' +
@@ -259,6 +296,14 @@
     $(document).on('click','#form_submit_service',function(e){
         e.preventDefault()
         $('form#service_form').submit()
+    })
+
+    //reset color
+    $(document).on('click','#reset_color',function(e){
+        e.preventDefault()
+
+        $('form#slider-form input[name="color_top"]').val('255, 0, 0, 0.521')
+        $('form#slider-form input[name="color_bottom"]').val('5, 10, 90, 0.699')
     })
 
 })(jQuery)

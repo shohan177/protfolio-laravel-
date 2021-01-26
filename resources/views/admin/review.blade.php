@@ -24,53 +24,6 @@
     @endif
 
 
-    <form id="slider-form" action="" method="POST" enctype="multipart/form-data">
-    @csrf
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Academic Degree</h4>
-                        <a class="btn btn-outline-primary btn-rounded  px-5 btn-sm" id="add_degree">Add</a>
-                    </div>
-                    <div class="card-body">
-                        <!-- Default accordion -->
-                        <div id="accordion-one" class="accordion accordion-primary">
-                            <div class="accordion__item">
-                                <div class="accordion__header rounded-lg collapsed" data-toggle="collapse" data-target="#default_collapseOne" aria-expanded="false">
-                                    <span class="accordion__header--text">Accordion Header One</span>
-                                    <button id="" style="margin-right: 30px" remove_id="accordion-one" class="close">&times;</button>
-                                    <span class="accordion__header--indicator"></span>
-                                </div>
-                                <div id="default_collapseOne" class="accordion__body collapse" data-parent="#accordion-one" style="">
-                                    <div class="accordion__body--text bg-primary-light">
-                                        <div class="form-row input-info ">
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control input-rounded" placeholder="Degree name">
-                                            </div>
-                                            <div class="col mt-2 mt-sm-0">
-                                                <input type="text" class="form-control input-rounded" placeholder="Start">
-                                            </div>
-                                            <div class="col mt-2 mt-sm-0">
-                                                <input type="text" class="form-control input-rounded" placeholder="End">
-                                            </div>
-                                        </div>
-                                        <div class="form-row input-info  mt-3">
-                                            <div class="col mt-2 mt-sm-0">
-                                                <textarea name="about_text" style="border-radius: 10px;"  class="form-control" placeholder="Course Details" rows="4"></textarea>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
 
 

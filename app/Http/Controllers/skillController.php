@@ -95,8 +95,18 @@ class skillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $id;
     }
+    public function skill_delete($id)
+    {
+        $data = Skill::find($id);
+        $data -> delete();
+
+        return "done";
+
+    }
+
+
 
     public function showAllSkill(){
         $s_data = Skill::latest() -> get();
@@ -126,7 +136,7 @@ class skillController extends Controller
             <td><span class="badge badge-<?php echo $retVal?>"><?php echo $val -> level?> %</span>
             <td><?php echo date('d. M .Y',$date)?></td>
             </td>
-            <td><span><a href="#" id="skill_edit" skill_edit_id="<?php echo $val -> id ?>" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a href="javascript:void()" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+            <td><span><a href="#" id="skill_edit" skill_edit_id="<?php echo $val -> id ?>" class="mr-4" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a><a id="skill_delete" skill_delete_id="<?php echo $val -> id ?>" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
             </td>
         </tr>
 

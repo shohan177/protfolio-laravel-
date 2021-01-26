@@ -29,7 +29,7 @@
 
 
         <div class="row ">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="card d-flex flex-xl-column flex-sm-column flex-md-row flex-column">
                     <div class="card-body text-center border-bottom profile-bx">
                         <div class=" mb-4">
@@ -54,12 +54,26 @@
 
 
                         </div>
+                        <div class="row form-group">
+                            <div class="col-5">
+                                <input  type="text" name="color_top" value="{{ $cover_data -> color_top }}" class="form-control input-rounded">
+                            </div>
+                            <div class="col-2 mt-2">
+                                <a href="" id="reset_color" class="btn btn-success shadow btn-xs sharp"><i class="fa fa-refresh"></i></a>
+                            </div>
+
+                            <div class="col-5">
+                                <input  type="text" name="color_bottom" value="{{ $cover_data -> color_bottom }}" class="form-control input-rounded">
+                            </div>
+
+
+                        </div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Social Links</h4>

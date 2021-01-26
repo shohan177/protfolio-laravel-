@@ -1,3 +1,7 @@
+@php
+    $data = App\Models\Setting::find(1);
+    $json_data = json_decode($data -> setting_data)
+@endphp
 <div class="header">
     <div class="header-content">
         <nav class="navbar navbar-expand">
@@ -108,9 +112,9 @@
                     </li> --}}
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                            <img src="images/profile/17.jpg" width="20" alt=""/>
+                            <img src="{{ URL::to('/')}}/media/home/{{ $json_data -> pro_photo }}" width="20" alt=""/>
                             <div class="header-info">
-                                <span class="text-black">Oda Dink</span>
+                                <span class="text-black">{{ Auth::user() -> name }}</span>
                                 <p class="fs-12 mb-0">Super Admin</p>
                             </div>
                         </a>

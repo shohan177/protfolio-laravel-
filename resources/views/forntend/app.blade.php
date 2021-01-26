@@ -71,21 +71,22 @@
 		</div>
 		<!-- logo image -->
 		<div class="site-logo">
-			<a href="index-2.html">
-				<img src="forntend/asset/images/logo.svg" alt="Bolby" />
+			<a href="">
+				{{-- <img src="forntend/asset/images/logo.svg" alt="Bolby" /> --}}
+
 			</a>
 		</div>
 	</div>
 </header>
 
 <!-- desktop header -->
-<header class="desktop-header-2 d-flex align-items-start flex-column">
+<header class="desktop-header-2 d-flex align-items-start flex-column" style="height: 100%">
 
 	<!-- logo image -->
 	<div class="site-logo">
-		<a href="{{ route('home') }}">
+		{{-- <a href="{{ route('home') }}">
 			<img src="forntend/asset/images/logo-b-light.svg" alt="Bolby" />
-		</a>
+		</a> --}}
 	</div>
 
 	<!-- main menu -->

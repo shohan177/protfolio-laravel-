@@ -66,6 +66,7 @@
                                                     <textarea name="acd_e_about_text[]" style="border-radius: 10px;"  class="form-control" placeholder="Course Details" rows="4">{{ $val -> about }}</textarea>
                                                 </div>
 
+
                                             </div>
                                         </div>
                                     </div>

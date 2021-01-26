@@ -82,6 +82,8 @@ class settingController extends Controller
         }
 
         $cover_data = [
+            'color_top' => $request -> color_top,
+            'color_bottom' => $request -> color_bottom,
             'title' => $request -> Cover_titel,
             'pro_photo' => $pro_pic,
             'cover_photo' => $cover_pic,
@@ -189,6 +191,7 @@ class settingController extends Controller
             }
 
             $array = [
+                'color' => $request -> color[$i],
                 'name' => $request -> name[$i],
                 'r_id' => $request -> r_id[$i],
                 'about' => $request -> about_text[$i],

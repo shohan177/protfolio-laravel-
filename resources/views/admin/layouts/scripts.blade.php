@@ -10,6 +10,9 @@
 
 	<!-- Chart piety plugin files -->
     <script src="vendor/peity/jquery.peity.min.js"></script>
+    <!-- Datatable -->
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="js/plugins-init/datatables.init.js"></script>
 
 	<!-- Dashboard 1 -->
 	<script src="js/dashboard/dashboard-1.js"></script>

@@ -74,8 +74,12 @@
                                 <div id="default_{{ $val -> r_id }}" class="accordion__body collapse" data-parent="#accordion-{{ $val -> r_id }}" style="">
                                     <div class="accordion__body--text">
                                         <div class="form-row input-info ">
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-5">
                                                 <input type="text" value="{{ $val -> name }}" name="name[]" class="form-control input-rounded" placeholder="Service name">
+
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="color" class="form-control input-rounded" id="favcolor" name="color[]" value="{{ $val -> color }}">
                                             </div>
                                             <div class="col mt-5 mt-sm-0 ml-lg-2">
                                                 <label for="add_{{ $val -> r_id }}"><img id="{{ $val -> r_id }}" style="cursor: pointer; border-radius: 5px;" src="{{ URL::to('/') }}/media/home/{{ $val -> logo}}" class="w-75 h-50" alt=""></label>
