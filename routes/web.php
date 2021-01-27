@@ -27,7 +27,10 @@ Route::get('/setting', 'App\Http\Controllers\settingController@sliderSetting') -
 Route::post('/setting', 'App\Http\Controllers\settingController@sliderDataStore') ->name('store.slider');
 Route::get('/experiance', 'App\Http\Controllers\settingController@showExperiancePage') ->name('experiance.show');
 Route::post('/experiance', 'App\Http\Controllers\settingController@storeExperiance') ->name('experiance.store');
-Route::get('/reviews', 'App\Http\Controllers\settingController@showReviewPage') ->name('review.show');
+
 Route::post('/service', 'App\Http\Controllers\settingController@updateServiceData') ->name('sevice.update');
+Route::get('/reviews', 'App\Http\Controllers\reviewAdd@showReviewPage') ->name('review.show');
+Route::post('/reviews', 'App\Http\Controllers\reviewAdd@storeReview') ->name('review.store');
+Route::get('/reviews-all', 'App\Http\Controllers\reviewAdd@showAllReview') ->name('review.store');
 
 

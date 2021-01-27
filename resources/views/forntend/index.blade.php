@@ -1,5 +1,6 @@
 @php
     $data = App\Models\Setting::find(1);
+    $Reviews_data = App\Models\reviews::latest() -> paginate(5);
     $s_val = json_decode($data -> setting_data);
     $service = json_decode($data -> service);
     $exp = json_decode($data -> experience);
@@ -543,36 +544,32 @@
 		<div class="container">
 
 			<!-- section title -->
-			<h2 class="section-title wow fadeInUp">Clients & Reviews</h2>
+			<a href="{{ route('review.show') }}"><h2 class="section-title wow fadeInUp">Clients & Reviews</h2></a>
 
 			<div class="spacer" data-height="60"></div>
 
 			<!-- testimonials wrapper -->
 			<div class="testimonials-wrapper">
 
-				<!-- testimonial item -->
-				<div class="testimonial-item text-center mx-auto">
-					<div class="thumb mb-3 mx-auto">
-						<img src="forntend/asset/images/avatar-3.svg" alt="customer-name" />
-					</div>
-					<h4 class="mt-3 mb-0">John Doe</h4>
-					<span class="subtitle">Product designer at Dribbble</span>
-					<div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
-						<p class="mb-0">I enjoy working with the theme and learn so much. You guys make the process fun and interesting. Good luck! 👍</p>
-					</div>
-				</div>
+                @foreach ($Reviews_data as $item)
+                    @php
+                        $data = json_decode($item -> json_data)
+                    @endphp
+                    <!-- testimonial item -->
+                    <div class="testimonial-item text-center mx-auto">
+                        <div class="thumb mb-3 mx-auto">
+                            <img src="{{ URL::to('/') }}/media/review/{{ $data -> photo }}" alt="customer-name" />
+                        </div>
+                        <h4 class="mt-3 mb-0">{{ $data -> name }}</h4>
+                        <span class="subtitle"><i class="fa fa-globe" aria-hidden="true"> {{ $data -> country }}</i></span>
+                        <div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
+                            <p class="mb-0">{!! Str::of(htmlspecialchars_decode($data -> comment)) -> words('20','...') !!}</p>
+                        </div>
+                    </div>
 
-				<!-- testimonial item -->
-				<div class="testimonial-item text-center mx-auto">
-					<div class="thumb mb-3 mx-auto">
-						<img src="forntend/asset/images/avatar-1.svg" alt="customer-name" />
-					</div>
-					<h4 class="mt-3 mb-0">John Doe</h4>
-					<span class="subtitle">Product designer at Dribbble</span>
-					<div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
-						<p class="mb-0">I enjoy working with the theme and learn so much. You guys make the process fun and interesting. Good luck! 🔥</p>
-					</div>
-				</div>
+                @endforeach
+
+
 
 			</div>
 

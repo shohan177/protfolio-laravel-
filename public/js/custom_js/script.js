@@ -3,6 +3,7 @@
 (function($){
     $(document).ready(function(){
         getAllSkill()
+        getAllReview()
 
         setTimeout(function() {
             $('#notification').fadeOut("slow")
@@ -13,6 +14,7 @@
     // submit slider form slider-form
     $(document).on('click','#slider_submit',function(e){
         e.preventDefault()
+        pageLeave()
         $('form#slider-form').submit()
     })
     //logout form
@@ -39,6 +41,12 @@
                 $("tbody#skill_body").html(data)
             }
         })
+    }
+
+    function pageLeave($val){
+        window.onbeforeunload = function () {
+            return $val
+           }
     }
 
 
@@ -107,6 +115,7 @@
     //add socal link fild
     $(document).on('click','#add_socal_link',function(e){
         e.preventDefault()
+        pageLeave("true")
         let rend_id = Math.floor(Math.random() * 10000)
         $('#link-container').append(' <tr  id="div_'+rend_id+'"> \n'+
 '        <td><input type="text" class="form-control input-rounded border-warning" name="logo[]" placeholder="logo"></td>\n'+
@@ -153,6 +162,7 @@
     //add moto
     $(document).on('click','#add_moto',function(e){
         e.preventDefault()
+        pageLeave("true")
         let rend_id = Math.floor(Math.random() * 10000)
         $('#moto-container').append('<div id="div_'+rend_id+'" class="row">\n' +
 '        <div class="col-sm-8">\n' +
@@ -167,9 +177,10 @@
 '    </div>')
 
     })
-    //add E
+    //add acedamic and works
     $(document).on('click','.add_accordion', function(e){
         e.preventDefault()
+        pageLeave("true")
         let continer = $(this).attr('div')
         let rend_id = Math.floor(Math.random() * 10000)
         $('#'+continer).append('<div id="accordion-'+rend_id+'" class="accordion shadow accordion-rounded">\n' +
@@ -209,7 +220,7 @@
     //sevice add
     $(document).on('click','#add_service',function (e){
         e.preventDefault()
-
+        pageLeave("true")
         let rend_id = Math.floor(Math.random() * 10000)
 
         $("#service_container").append('<div id="accordion-'+rend_id+'" class="accordion accordion-danger-solid">\n' +
@@ -279,6 +290,7 @@
 
     // uplode photo view
     $(document).on('change','input.upload_image',function(e){
+        pageLeave("true")
         e.preventDefault()
         let id = $(this).attr('code')
 
@@ -289,14 +301,45 @@
     });
     //submit experiance form
     $(document).on('click','#experiance_submit',function(e){
+        pageLeave()
         e.preventDefault()
         $('form#experiance-form').submit()
     })
-    //submit form
+    //submit service form
     $(document).on('click','#form_submit_service',function(e){
+        pageLeave()
         e.preventDefault()
         $('form#service_form').submit()
     })
+    //submit comment form
+    $(document).on('submit','form#review_form',function(e){
+        e.preventDefault()
+        $.ajax({
+            url:'/reviews',
+            method: "POST",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            success: function(data){
+                getAllReview()
+                $('#modalGrid').modal('hide');
+
+            }
+
+        })
+    })
+
+    function getAllReview(){
+        $.ajax({
+            url: '/reviews-all',
+            method: "GET",
+            success: function(data){
+                $("ul#review_container").html(data)
+            }
+        })
+    }
+
+
 
     //reset color
     $(document).on('click','#reset_color',function(e){

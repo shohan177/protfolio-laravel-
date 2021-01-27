@@ -1,10 +1,13 @@
+@section('fav_tex')
+    Review
+@endsection
 @section('header')
 <div class="row">
     <div class="dashboard_bar col-sm-6">
         Reviews
      </div>
      <div class="col-sm-6">
-        <a class="btn btn-outline-primary btn-rounded  px-5 btn-sm" id="experiance_submit">UPDATE</a>
+        <a class="btn btn-outline-primary btn-rounded  px-5 btn-sm" data-toggle="modal" data-target="#modalGrid">ADD</a>
      </div>
 </div>
 @endsection
@@ -22,6 +25,72 @@
         </button>
     </div>
     @endif
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Media list</h4>
+                </div>
+                <div class="card-body ">
+                    <div class="bootstrap-media" >
+                        <ul class="list-unstyled" id="review_container">
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalGrid">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Review</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form id="review_form" action="" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="form-row input-warning ">
+
+                            <div class="form-group col-md-4">
+                                <label  for="pro_pic"><img id="up_44" width="150px" height="150px" style="cursor: pointer; border-radius: 50%; border: 5px solid #40189D; padding: 4px;" src="{{ URL::to('/') }}/media/logo/camera.png" width="150px" alt=""></label>
+                                <input name="photo" id="pro_pic" class="upload_image" code="up_44"  type="file" style="display: none">
+
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label>Name</label>
+                                <input type="text" class="form-control input-rounded" name="name" placeholder="your name here"><br>
+                                <label>Country</label>
+                                <input type="text" class="form-control input-rounded" name="country" placeholder="your countery">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label>Comment</label>
+                                <textarea style="border-radius: 10px;" name="comment" class="form-control" id="" cols="30" rows="10"></textarea>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger light btn-rounded  px-5 btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-rounded  px-5 btn-sm">Save</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
 
 
 </div>

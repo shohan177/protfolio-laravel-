@@ -5,6 +5,9 @@
      </div>
 </div>
 @endsection
+@section('fav_tex')
+    Service
+@endsection
 
 @extends("admin.layouts.app")
 
@@ -49,7 +52,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Academic Degree</h4>
+                    <h4 class="card-title">Services</h4>
                     <div class="btn-group">
 
 

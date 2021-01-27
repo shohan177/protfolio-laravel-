@@ -1,6 +1,8 @@
 <div class="deznav">
     <div class="deznav-scroll">
+
         <ul class="metismenu" id="menu">
+            @if (isset(Auth::user() -> name))
             <li><a class="" href="{{ route('home') }}" aria-expanded="false">
                     <i class="flaticon-381-networking"></i>
                     <span class="nav-text">Dashboard</span>
@@ -55,6 +57,7 @@
                 </a>
 
             </li>
+            @endif
             <li><a class="" href="{{ route('review.show') }}" aria-expanded="false">
                     <i class="flaticon-381-heart"></i>
                     <span class="nav-text">Review</span>

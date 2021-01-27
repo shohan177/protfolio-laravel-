@@ -1,6 +1,21 @@
+@section('header')
+<div class="row">
+    <div class="dashboard_bar col-sm-12">
+        Welcome {{ Auth::user() -> name }}
+     </div>
+</div>
+@endsection
+@php
+    $data = App\Models\Setting::find(1);
+    $s_val = json_decode($data -> setting_data);
+@endphp
 @extends("admin.layouts.app")
 
 @section('body')
+@php
+    $data = App\Models\Setting::find(1);
+    $json_data = json_decode($data -> setting_data)
+@endphp
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-3 col-xxl-6 col-sm-6">
@@ -82,35 +97,42 @@
                     <div class="card d-flex flex-xl-column flex-sm-column flex-md-row flex-column">
                         <div class="card-body text-center border-bottom profile-bx">
                             <div class="profile-image mb-4">
-                                <img src="images/avatar/1.jpg" class="rounded-circle" alt="">
+                                <img src="{{ URL::to('/')}}/media/home/{{ $json_data -> pro_photo }}" style="height: 118px; width: 118px"  class="rounded-circle" alt="">
                             </div>
-                            <h4 class="fs-22 text-black mb-1">Oda Dink</h4>
+                            <h4 class="fs-22 text-black mb-1">{{ $s_val -> title }}</h4>
                             <p class="mb-4">Programmer</p>
                             <div class="row">
+
+                                 @php
+                                   $skill_data = App\Models\Skill::latest() -> get();
+                                @endphp
+
+                                @foreach ($skill_data as $val)
+                                @php
+                                    if ($val -> level < 30){
+                                        $color = "#E9594D";
+                                    }elseif($val -> level < 70){
+                                        $color = "#FFD15C";
+                                    }else{
+                                        $color = "#2CC37C";
+                                    }
+
+                                @endphp
+
                                 <div class="col-4 p-0">
                                     <div class="d-inline-block mb-2 relative donut-chart-sale">
-                                        <span class="donut" data-peity='{ "fill": ["rgb(255, 142, 38)", "rgba(236, 236, 236, 1)"],   "innerRadius": 27, "radius": 10}'>7/9</span>
-                                        <small class="text-black">66%</small>
+                                        <span class="donut" data-peity='{ "fill": ["{{ $color }}", "rgba(236, 236, 236, 1)"],   "innerRadius": 27, "radius": 10}'>{{ $val -> level }}/100</span>
+                                        <small class="text-black">{{ $val -> level }}%</small>
                                     </div>
-                                    <span class="d-block">PHP</span>
+                                    <span class="d-block">{{ $val -> name }}</span>
                                 </div>
-                                <div class="col-4 p-0">
-                                    <div class="d-inline-block mb-2 relative donut-chart-sale">
-                                        <span class="donut" data-peity='{ "fill": ["rgb(62, 168, 52)", "rgba(236, 236, 236, 1)"],   "innerRadius": 27, "radius": 10}'>4/9</span>
-                                        <small class="text-black">31%</small>
-                                    </div>
-                                    <span class="d-block">Vue</span>
-                                </div>
-                                <div class="col-4 p-0">
-                                    <div class="d-inline-block mb-2 relative donut-chart-sale">
-                                        <span class="donut" data-peity='{ "fill": ["rgb(34, 172, 147)", "rgba(236, 236, 236, 1)"],   "innerRadius": 27, "radius": 10}'>2/9</span>
-                                        <small class="text-black">7%</small>
-                                    </div>
-                                    <span class="d-block">Laravel</span>
-                                </div>
+                                @endforeach
+
+
+
                             </div>
                         </div>
-                        <div class="card-body col-xl-12 col-md-6 col-sm-12 border-left">
+                        {{-- <div class="card-body col-xl-12 col-md-6 col-sm-12 border-left">
                             <h4 class="fs-18 text-black mb-3">Recent Activities</h4>
                             <div class="media mb-4">
                                 <span class="p-3 border mr-3 rounded">
@@ -156,7 +178,7 @@
                                     <span class="fs-14">12h ago</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -215,7 +237,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-12">
+                {{-- <div class="col-xl-12">
                     <h4 class="fs-20 text-black mb-sm-4 mt-sm-0 mt-2  mb-2">Recomended Jobs</h4>
                     <div class="testimonial-one owl-carousel">
                         <div class="items">
@@ -291,7 +313,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="col-xl-12">

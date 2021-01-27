@@ -115,12 +115,7 @@ class settingController extends Controller
         $experiance_data = json_decode($setting_table -> experience);
         return view('admin.experiance',compact('experiance_data'));
     }
-    /**
-     * show admin review page
-     */
-    public function showReviewPage(){
-        return view('admin.review');
-    }
+
 
     /**
      * store Experiance data

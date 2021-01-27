@@ -1,7 +1,9 @@
+@if (isset(Auth::user() -> name))
 @php
     $data = App\Models\Setting::find(1);
     $json_data = json_decode($data -> setting_data)
 @endphp
+@endif
 <div class="header">
     <div class="header-content">
         <nav class="navbar navbar-expand">
@@ -9,7 +11,7 @@
                 <div class="header-left">
                    @yield('header')
                 </div>
-
+                @if (isset(Auth::user() -> name))
                 <ul class="navbar-nav header-right">
                     {{-- <li class="nav-item">
                         <div class="input-group search-area d-lg-inline-flex d-none">
@@ -110,6 +112,9 @@
                             <a class="all-notification" href="#">See all notifications <i class="ti-arrow-right"></i></a>
                         </div>
                     </li> --}}
+
+
+
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                             <img src="{{ URL::to('/')}}/media/home/{{ $json_data -> pro_photo }}" width="20" alt=""/>
@@ -137,6 +142,7 @@
                         </form>
                     </li>
                 </ul>
+                @endif
             </div>
         </nav>
     </div>

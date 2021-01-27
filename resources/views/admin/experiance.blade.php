@@ -1,3 +1,6 @@
+@section('fav_tex')
+    Experiance
+@endsection
 @section('header')
 <div class="row">
     <div class="dashboard_bar col-sm-6">
