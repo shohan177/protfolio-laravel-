@@ -4,7 +4,8 @@
     $(document).ready(function(){
         getAllSkill()
         getAllReview()
-
+        catAll()
+        CKEDITOR.replace('project_details')
         setTimeout(function() {
             $('#notification').fadeOut("slow")
         }, 5000);
@@ -348,6 +349,47 @@
         $('form#slider-form input[name="color_top"]').val('255, 0, 0, 0.521')
         $('form#slider-form input[name="color_bottom"]').val('5, 10, 90, 0.699')
     })
+
+    //category add
+    $(document).on('click','#cat_save',function(e){
+        e.preventDefault()
+        let rend_id = Math.floor(Math.random() * 10000)
+        let val = $('#cat_valu').val()
+
+        $.ajax({
+            url: '/category/'+val+'/'+rend_id,
+            success: function(data){
+
+                $('#cat_valu').val('')
+                function catAll(){
+                    $.ajax({
+                        url: '/show-cat',
+                        success: function(data){
+                            $("#cat_select").html(data)
+                        }
+                    })
+
+                }
+                catAll()
+
+
+            }
+
+        })
+
+
+    })
+
+    // show category
+    function catAll(){
+        $.ajax({
+            url: '/show-cat',
+            success: function(data){
+                $("#cat_select").html(data)
+            }
+        })
+
+    }
 
 })(jQuery)
 

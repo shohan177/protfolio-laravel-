@@ -34,3 +34,9 @@ Route::post('/reviews', 'App\Http\Controllers\reviewAdd@storeReview') ->name('re
 Route::get('/reviews-all', 'App\Http\Controllers\reviewAdd@showAllReview') ->name('review.store');
 
 
+//project
+Route::get('/project','App\Http\Controllers\projectController@index') -> name('projects.index');
+Route::get('/category/{val}/{id}','App\Http\Controllers\projectController@store') -> name('projects.store');
+Route::get('/show-cat','App\Http\Controllers\projectController@showCategory');
+
+

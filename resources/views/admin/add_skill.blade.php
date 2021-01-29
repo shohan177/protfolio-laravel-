@@ -22,34 +22,8 @@
     </div>
     @endif
     <div class="row">
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">skills</h4>
-                    <a class="btn btn-outline-warning btn-rounded  px-5 btn-sm"  id="add_skill_btn">Add</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered verticle-middle table-responsive-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Task</th>
-                                    <th scope="col">Progress</th>
-                                    <th scope="col">Label</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="skill_body">
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-6">
+         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Services</h4>
@@ -113,6 +87,35 @@
 
 
         </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">skills</h4>
+                    <a class="btn btn-outline-warning btn-rounded  px-5 btn-sm"  id="add_skill_btn">Add</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered verticle-middle table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Progress</th>
+                                    <th scope="col">Label</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="skill_body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 </div>
