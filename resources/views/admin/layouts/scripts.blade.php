@@ -8,6 +8,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    {{-- Calender --}}
+    <script src="js/dashboard/fullcalendar.min.js"></script>
+    <script src="js/dashboard/fullcalendar-init.js"></script>
+
+
 	<!-- Chart piety plugin files -->
     <script src="vendor/peity/jquery.peity.min.js"></script>
     <!-- Datatable -->

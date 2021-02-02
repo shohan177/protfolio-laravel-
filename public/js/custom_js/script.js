@@ -391,6 +391,15 @@
 
     }
 
+    //delete item
+    $(document).on('click','#item_del',function(e){
+        if (confirm('Confirm you want to delete')) {
+            return true
+        } else {
+            return false
+        }
+    })
+
 })(jQuery)
 
 

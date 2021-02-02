@@ -69,7 +69,7 @@
                 <span class="nav-text">Projects</span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="table-bootstrap-basic.html">Project Gallary</a></li>
+                <li><a href="{{ route('projectGellary.show') }}">Project Gallary</a></li>
                 <li><a href="{{ route('projects.index') }}">Add Project</a></li>
             </ul>
         </li>

@@ -16,6 +16,8 @@
     <link href="css/style.css" rel="stylesheet">
 	<link href="../../cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 	<link href="vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    {{-- calender --}}
+    <link href="css/fullcalendar.min.css" rel="stylesheet">
     {{-- datatable  --}}
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     {{-- ck editor  --}}

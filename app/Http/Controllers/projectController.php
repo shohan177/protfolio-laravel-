@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class projectController extends Controller
@@ -21,7 +22,7 @@ class projectController extends Controller
         return view('admin.addProject');
     }
 
-    public function store($val ,$id){
+    public function storecategory($val ,$id){
         $array = [
             'val' => $val,
             'r_id' => $id
@@ -56,5 +57,56 @@ class projectController extends Controller
 
     </select>
     <?php
+    }
+
+    public function storeProject(Request $request){
+
+        if ($request -> hasFile('photo')) {
+
+            $img = $request -> photo;
+            $u_img = md5(time().rand()).'.'.$img -> getClientOriginalExtension();
+            $img -> move(public_path('media/projects/'),$u_img);
+
+        } else {
+            $u_img = "camera.png";
+        }
+
+
+
+        $all_cat = count($request -> Cat );
+        // manage category
+        $category = [];
+        for ($i=0; $i < $all_cat; $i++) {
+           $arry = [
+                'name' => $request -> Cat[$i]
+           ];
+           array_push($category,$arry);
+        }
+
+        $data = [
+            'name' => $request -> name,
+            'url' => $request -> url,
+            'batch' => $request -> batch,
+            'deatils' => $request -> deatils,
+            'photo' => $u_img,
+            'categorys' => $category,
+        ];
+
+        Project::create([
+            'json_data' => json_encode($data),
+            'status' => 1,
+        ]);
+
+        return redirect('/project-gallery')-> with('success','Project Added successful');
+
+    }
+
+    /**
+     * delete project
+     */
+    public function deleteProject($id){
+        $data = Project::find($id);
+        $data -> delete();
+        return back() -> with('success','Project Added successful');
     }
 }

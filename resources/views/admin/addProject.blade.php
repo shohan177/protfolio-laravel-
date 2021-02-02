@@ -27,7 +27,8 @@ Projects
     @endif
 
 
-
+    <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <!-- Column starts -->
             <div class="col-xl-9">
@@ -42,13 +43,13 @@ Projects
                             <div class="form-row input-primary">
 
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control input-rounded" placeholder="Name">
+                                        <input type="text" name="name" class="form-control input-rounded" placeholder="Name">
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control input-rounded" placeholder="Batch">
+                                        <input type="text" name="batch" class="form-control input-rounded" placeholder="Batch">
                                     </div>
                                     <div class="col-sm-12 mt-3">
-                                        <input type="text" class="form-control input-rounded" placeholder="https://www.google.com">
+                                        <input type="text" name="url" class="form-control input-rounded" placeholder="https://url">
                                     </div>
 
 
@@ -61,7 +62,7 @@ Projects
                     </div>
                         <div class="form-row">
                             <div class="col-sm-12 mt-3">
-                                <textarea name="" id="project_details" cols="30" rows="10"></textarea>
+                                <textarea name="deatils" id="project_details" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                     </div>
@@ -92,7 +93,9 @@ Projects
                     </div>
                 </div>
             </div>
+            <input type="submit" class="btn btn-primary"  value="save" name="" id="">
         </div>
+    </form>
 
 
 </div>

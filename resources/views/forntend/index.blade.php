@@ -319,6 +319,11 @@
 	</section>
 
 	<!-- section works -->
+     {{-- data load --}}
+     @php
+        $project_data = App\Models\Project::latest() -> get();
+        $category_data = App\Models\Category::latest() -> get();
+     @endphp
 	<section id="works">
 
 		<div class="container">
@@ -331,27 +336,34 @@
 			<!-- portfolio filter (desktop) -->
 			<ul class="portfolio-filter list-inline wow fadeInUp">
 				<li class="current list-inline-item" data-filter="*">Everything</li>
-				<li class="list-inline-item" data-filter=".creative">Creative</li>
-				<li class="list-inline-item" data-filter=".art">Art</li>
-				<li class="list-inline-item" data-filter=".design">Design</li>
-				<li class="list-inline-item" data-filter=".branding">Branding</li>
+                @foreach ($category_data as $item)
+                    @php
+                        $data = json_decode($item -> json_data)
+                    @endphp
+				<li class="list-inline-item" data-filter=".{{ $data -> r_id }}">{{ $data -> val }}</li>
+                @endforeach
+
 			</ul>
 
 			<!-- portfolio filter (mobile) -->
 			<div class="pf-filter-wrapper">
 				<select class="portfolio-filter-mobile">
 					<option value="*">Everything</option>
-					<option value=".creative">Creative</option>
-					<option value=".art">Art</option>
-					<option value=".design">Design</option>
-					<option value=".branding">Branding</option>
+                    @foreach ($category_data as $item)
+                        @php
+                            $data = json_decode($item -> json_data)
+                        @endphp
+                        <option value=".{{ $data -> r_id }}">{{ $data -> val }}</option>
+                    @endforeach
+
+
 				</select>
 			</div>
 
 			<!-- portolio wrapper -->
 			<div class="row portfolio-wrapper">
 
-				<!-- portfolio item -->
+				{{-- <!-- portfolio item -->
 				<div class="col-md-4 col-sm-6 grid-item art">
 					<a href="forntend/asset/images/works/1.svg" class="work-image">
 						<div class="portfolio-item rounded shadow-dark">
@@ -366,33 +378,50 @@
 							</div>
 						</div>
 					</a>
-				</div>
+				</div> --}}
 
 				<!-- portfolio item -->
-				<div class="col-md-4 col-sm-6 grid-item creative design">
-					<a href="#small-dialog" class="work-content">
-						<div class="portfolio-item rounded shadow-dark">
-							<div class="details">
-								<span class="term">Creative</span>
-								<h4 class="title">Guest App Walkthrough Screens</h4>
-								<span class="more-button"><i class="icon-options"></i></span>
-							</div>
-							<div class="thumb">
-								<img src="forntend/asset/images/works/2.svg" alt="Portfolio-title" />
-								<div class="mask"></div>
-							</div>
-						</div>
-					</a>
-					<div id="small-dialog" class="white-popup zoom-anim-dialog mfp-hide">
-						<img src="forntend/asset/images/single-work.svg" alt="Title" />
-						<h2>Guest App Walkthrough Screens</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit nibh in massa semper rutrum. In rhoncus eleifend mi id tempus.</p>
-						<p>Donec consectetur, libero at pretium euismod, nisl felis lobortis urna, id tristique nisl lectus eget ligula.</p>
-						<a href="#" class="btn btn-default">View on Dribbble</a>
-					</div>
-				</div>
+                @foreach ($project_data as $item)
+                    @php
+                        $data = json_decode($item -> json_data);
+                        $class ="";
 
-				<!-- portfolio item -->
+                        foreach ($data -> categorys as $val) {
+                            $class .= $val -> name." ";
+                        }
+                    @endphp
+
+
+
+                    <div class="col-md-4 col-sm-6 grid-item creative {{ $class }}">
+                        <a href="#small-dialog{{ $item -> id }}" class="work-content">
+                            <div class="portfolio-item rounded shadow-dark">
+                                <div class="details">
+                                    <span class="term">{{ $data -> batch }}</span>
+                                    <h4 class="title">{{ $data -> name }}</h4>
+                                    <span class="more-button"><i class="icon-options"></i></span>
+                                </div>
+                                <div class="thumb">
+                                    <img style="height: 250px; width:400px" src="{{ URL::to('/') }}/media/projects/{{ $data -> photo }}" alt="Portfolio-title" />
+                                    <div class="mask"></div>
+                                </div>
+                            </div>
+                        </a>
+                        <div id="small-dialog{{ $item -> id }}" class="white-popup zoom-anim-dialog mfp-hide" style="width: 80%">
+                            <img style="height: 300px; width:650px" src="{{ URL::to('/') }}/media/projects/{{ $data -> photo }}" alt="Title" />
+                            <h2>{{ $data -> name }}</h2>
+
+                            <p>{!! Str::of(htmlspecialchars_decode($data -> deatils)) !!}</p>
+                            <p>Donec consectetur, libero at pretium euismod, nisl felis lobortis urna, id tristique nisl lectus eget ligula.</p>
+                            <a href="{{ $data -> url }} }}" class="btn btn-default">Live view</a>
+                        </div>
+                    </div>
+
+                @endforeach
+
+
+
+				{{-- <!-- portfolio item -->
 				<div class="col-md-4 col-sm-6 grid-item branding">
 					<a href="https://www.youtube.com/watch?v=qf9z4ulfmYw" class="work-video">
 						<div class="portfolio-item rounded shadow-dark">
@@ -462,7 +491,7 @@
 							</div>
 						</div>
 					</a>
-				</div>
+				</div> --}}
 
 
 
