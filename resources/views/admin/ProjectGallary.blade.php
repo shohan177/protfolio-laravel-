@@ -6,9 +6,14 @@ Projects
     <div class="dashboard_bar col-sm-6">
         Projects
      </div>
-     {{-- <div class="col-sm-6">
-        <a class="btn btn-outline-primary btn-rounded  px-5 btn-sm" id="experiance_submit">UPDATE</a>
-     </div> --}}
+     <div class="col-sm-6">
+        <div class="input-group search-area d-lg-inline-flex d-none">
+            <input type="text" class="form-control " placeholder="Search Projects">
+            <div class="input-group-append">
+                <button class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+            </div>
+        </div>
+     </div>
 </div>
 @endsection
 @extends("admin.layouts.app")
@@ -51,7 +56,7 @@ Projects
         <div class="col-lg-12 col-xl-6">
             <div class="card">
                 <div class="d-flex" style="margin-left:90%">
-                    <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ URL::to('edit-project/') }}/{{ $item -> id }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                     <a href="{{ URL::to('delete-project/') }}/{{ $item -> id }}" id="item_del" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                 </div>
                 <div class="card-body">

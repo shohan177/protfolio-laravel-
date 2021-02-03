@@ -64,6 +64,7 @@
                 </a>
 
             </li>
+            @if (isset(Auth::user() -> name))
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-network"></i>
                 <span class="nav-text">Projects</span>
@@ -72,6 +73,7 @@
                 <li><a href="{{ route('projectGellary.show') }}">Project Gallary</a></li>
                 <li><a href="{{ route('projects.index') }}">Add Project</a></li>
             </ul>
+            @endif
         </li>
 
             {{-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

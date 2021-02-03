@@ -150,5 +150,35 @@
     </div>
 </div>
 
+{{-- update skill --}}
+<div class="modal fade none-border"  id="update_skill">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Update Skill</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="skill_form_udate" >
+                    @csrf
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control input-rounded border-warning bg-info-light" placeholder="    Name">
+                    </div>
+                    <div class="form-group">
+                        <input name="level" type="text" class="form-control input-rounded border-warning bg-info-light" placeholder="    Level">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="SAVE" class="btn btn-warning btn-rounded  px-5 btn-sm float-right">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @endsection

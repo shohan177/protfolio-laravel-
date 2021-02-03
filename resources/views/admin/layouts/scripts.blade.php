@@ -1,27 +1,27 @@
-<script src="vendor/global/global.min.js"></script>
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	<script src="vendor/chart.js/Chart.bundle.min.js"></script>
-    <script src="js/custom.min.js"></script>
-	<script src="js/deznav-init.js"></script>
-	<script src="vendor/owl-carousel/owl.carousel.js"></script>
+<script src="{{ asset('vendor/global/global.min.js') }}"></script>
+	<script src="{{ asset('vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+	<script src="{{ asset('vendor/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
+	<script src="{{ asset('js/deznav-init.js') }}"></script>
+	<script src="{{ asset('vendor/owl-carousel/owl.carousel.js') }}"></script>
     {{-- sweet alert --}}
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     {{-- Calender --}}
-    <script src="js/dashboard/fullcalendar.min.js"></script>
-    <script src="js/dashboard/fullcalendar-init.js"></script>
+    <script src="{{ asset('js/dashboard/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard/fullcalendar-init.js') }}"></script>
 
 
 	<!-- Chart piety plugin files -->
-    <script src="vendor/peity/jquery.peity.min.js"></script>
+    <script src="{{ asset('vendor/peity/jquery.peity.min.js') }}"></script>
     <!-- Datatable -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="js/plugins-init/datatables.init.js"></script>
+    <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
 
 	<!-- Dashboard 1 -->
-	<script src="js/dashboard/dashboard-1.js"></script>
-	<script src="js/custom_js/script.js"></script>
+	<script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
+	<script src="{{ asset('js/custom_js/script.js') }}"></script>
 
 	<script>
 		function carouselReview(){

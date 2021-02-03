@@ -72,7 +72,8 @@ class skillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Skill::find($id);
+        return $data;
     }
 
     /**
@@ -84,7 +85,11 @@ class skillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Skill::find($id);
+        $data -> name = $request -> name;
+        $data -> level = $request -> level;
+        $data -> update();
+
     }
 
     /**

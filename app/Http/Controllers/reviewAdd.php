@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Reviews;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function GuzzleHttp\json_decode;
 
@@ -46,12 +48,19 @@ class reviewAdd extends Controller
     public function showAllReview(){
         $data = Reviews::latest() -> get();
 
+
         foreach ($data as $item) {
             $val = json_decode( $item -> json_data);
          ?>
 
-                            <li class="media mt-4">
-                                <img class="mr-3 " style="height: 50px; width: 50px;border-radius: 50%" width="60" src="media/review/<?php echo  $val-> photo ?>" alt="DexignZone">
+                            <li class="media mt-2">
+                            <?php if (Auth::check()): ?>
+                            <div class="d-flex" style="margin-right:-25px; z-index: 1">
+                                <a href="/reviews-delete/<?php echo $item-> id; ?>" id="item_del" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                            </div>
+                            <?php endif;?>
+                                <img class="mr-3 " style="height: 80px; width: 80px;border-radius: 50%" width="60" src="media/review/<?php echo  $val-> photo ?>" alt="DexignZone">
+
                                 <div class="media-body">
                                     <div class="row">
                                         <div class="col">
@@ -66,7 +75,18 @@ class reviewAdd extends Controller
                                     <p class="mb-0"><?php echo  $val-> comment ?></p>
                                 </div>
                             </li>
+                            <hr>
          <?php
         }
+    }
+    /**
+     * delete review
+     */
+    public function deleteReview($id){
+        $data = Reviews::find($id);
+        $data -> delete();
+        return back() -> with('success','Comment delete successful');
+
+
     }
 }

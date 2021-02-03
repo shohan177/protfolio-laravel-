@@ -77,7 +77,33 @@
         e.preventDefault()
 
         $skill_id = $(this).attr('skill_edit_id')
-        alert( $skill_id);
+        $.ajax({
+            url: '/skill/'+$skill_id+'/edit',
+            success: function(data){
+                $('#update_skill').modal('show')
+                $('form#skill_form_udate input[name="name"]').val(data.name)
+                $('form#skill_form_udate input[name="level"]').val(data.level)
+
+            }
+
+        })
+    })
+
+    //update skill
+    $(document).on('submit','form#skill_form_udate',function(e){
+        e.preventDefault()
+
+        $.ajax({
+            url: '/update-skill/'+$skill_id,
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function(data){
+                getAllSkill()
+                $('#update_skill').modal('hide')
+            }
+        })
     })
     //delete skill
     $(document).on('click','#skill_delete',function(e){
@@ -291,7 +317,7 @@
 
     // uplode photo view
     $(document).on('change','input.upload_image',function(e){
-        pageLeave("true")
+        // pageLeave("true")
         e.preventDefault()
         let id = $(this).attr('code')
 
@@ -398,6 +424,20 @@
         } else {
             return false
         }
+    })
+
+    // ck editor edit data
+    $(document).ready(function(){
+        let data = $('#old_details').val()
+        CKEDITOR.instances.project_details.setData(data, function()
+        {
+            this.checkDirty();  // true
+        });
+    })
+
+    //submit project form
+    $(document).on('click','#project_submit',function(){
+        $('#project_add_from').submit()
     })
 
 })(jQuery)

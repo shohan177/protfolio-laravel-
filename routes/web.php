@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/skill', 'App\Http\Controllers\skillController');
 Route::get('/skill-delete/{id}', 'App\Http\Controllers\skillController@skill_delete');
 Route::get('/all-skill', 'App\Http\Controllers\skillController@showAllSkill') ->name('get_skills');
+Route::post('/update-skill/{id}', 'App\Http\Controllers\skillController@update') ->name('skill.update');
 
 //settings
 Route::get('/setting', 'App\Http\Controllers\settingController@sliderSetting') ->name('setting.index');
@@ -40,6 +41,7 @@ Route::post('/service', 'App\Http\Controllers\settingController@updateServiceDat
 Route::get('/reviews', 'App\Http\Controllers\reviewAdd@showReviewPage') ->name('review.show');
 Route::post('/reviews', 'App\Http\Controllers\reviewAdd@storeReview') ->name('review.store');
 Route::get('/reviews-all', 'App\Http\Controllers\reviewAdd@showAllReview') ->name('review.store');
+Route::get('/reviews-delete/{id}', 'App\Http\Controllers\reviewAdd@deleteReview') ->name('review.delete');
 
 
 //project
@@ -48,6 +50,8 @@ Route::get('/category/{val}/{id}','App\Http\Controllers\projectController@storec
 Route::get('/show-cat','App\Http\Controllers\projectController@showCategory');
 Route::post('/store-cat','App\Http\Controllers\projectController@storeProject') -> name('project.store') ;
 Route::get('/delete-project/{id}','App\Http\Controllers\projectController@deleteProject') -> name('delete.project') ;
+Route::get('/edit-project/{id}','App\Http\Controllers\projectController@editShow') -> name('edit.project') ;
+Route::post('/update-project','App\Http\Controllers\projectController@updateproject') -> name('update.project') ;
 Route::get('/project-gallery', function () {
     return view('admin.ProjectGallary');
 }) -> name('projectGellary.show');

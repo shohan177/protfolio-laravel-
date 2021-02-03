@@ -42,6 +42,7 @@ class projectController extends Controller
         $data = Category::all();
         ?>
     <select  name="Cat[]"  multiple class="form-control" id="exampleFormControlSelect2">
+    <option value="000" selected>uncategorized<i class="fa fa-close color-danger"></i></option>
         <?php
        foreach ($data as  $value) {
             $val = json_decode($value -> json_data);
@@ -107,6 +108,23 @@ class projectController extends Controller
     public function deleteProject($id){
         $data = Project::find($id);
         $data -> delete();
-        return back() -> with('success','Project Added successful');
+        return back() -> with('success','Project delete successful');
+    }
+
+    /**
+     * edit project
+     */
+    public function editShow($id){
+        $project_data = Project::find($id);
+        $category_data = Category:: all();
+
+        return view('admin.editProject',compact('project_data','category_data'));
+    }
+
+    /**
+     * update project
+     */
+    public function updateproject(Request $request){
+        return $request -> all();
     }
 }
